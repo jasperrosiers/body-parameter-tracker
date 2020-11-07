@@ -11,23 +11,11 @@ export class AuthGuard implements CanActivate {
         if (!req.headers.authorization) {
             return false;
         }
-
-        req.user = await this.validateToken(req.headers.authorization);
-
-        return true;
-    }
-
-    async validateToken(auth: string) {
-        if (auth.split(' ')[0] !== 'Bearer') {
+        if (req.headers.authorization.split(' ')[0] !== 'Bearer') {
             throw new HttpException('Invalid token', HttpStatus.FORBIDDEN);
         }
-        const token = auth.split(' ')[1];
-        try {
-            const decoded = jwt.verify(token, '' + this.configService.get('JWT_TOKEN_SECRET'));
-            return decoded;
-        } catch (err) {
-            const message = 'Token error: ' + (err.message || err.name);
-            throw new HttpException(message, HttpStatus.FORBIDDEN);
-        }
+        const token = req.headers.authorization.split(' ')[1];
+
+        return token === this.configService.get<string>('BEARER_TOKEN');
     }
 }
