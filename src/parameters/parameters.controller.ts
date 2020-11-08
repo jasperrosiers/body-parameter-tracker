@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Res, UseGuards} from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, HttpStatus, Param, Post, UseGuards} from '@nestjs/common';
 import {ParametersService} from "./parameters.service";
 import {LoggerService} from "../logger/logger.service";
 import {ParametersDto} from "./parameters.dto";
