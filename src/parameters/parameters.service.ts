@@ -21,13 +21,13 @@ export class ParametersService {
         }
         if (parametersDto.fatPercentage) {
             fatPercentage = {
-                weight: Array.from([parametersDto.fatPercentage]),
+                percentage: Array.from([parametersDto.fatPercentage]),
                 update: [new Date()]
             }
         }
         if (parametersDto.musclePercentage) {
             musclePercentage = {
-                weight: Array.from([parametersDto.musclePercentage]),
+                percentage: Array.from([parametersDto.musclePercentage]),
                 update: [new Date()]
             }
         }
