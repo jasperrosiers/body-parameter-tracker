@@ -5,6 +5,7 @@ import {AzureHttpRouter} from "@nestjs/azure-func-http";
 
 export async function createApp(): Promise<INestApplication> {
   const app = await NestFactory.create(AppModule, new AzureHttpRouter());
+  app.setGlobalPrefix('api');
 
   await app.init();
   return app;
