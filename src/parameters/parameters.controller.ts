@@ -14,6 +14,7 @@ export class ParametersController {
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
+    @UseGuards(AuthGuard)
     async createParameters(@Body() parametersDto: ParametersDto): Promise<void> {
         const existingParams: ParametersEntity = await this.parametersService.getParametersEntityByUserName(parametersDto.userName);
 
@@ -32,6 +33,7 @@ export class ParametersController {
     }
 
     @Get()
+    @UseGuards(AuthGuard)
     @Roles('admin')
     async findAll(): Promise<ParametersEntity[]> {
         return this.parametersService.getAll();
