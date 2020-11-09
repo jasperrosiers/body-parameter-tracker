@@ -18,12 +18,15 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "start:azure": "npm run build && func host start"
   },
   "//": "The dependency below is a substitute for @nestjs/azure-database until that has been fixed within npm",
   "dependencies": {
     "@azure/cosmos": "^3.9.2",
+    "@azure/functions": "^1.0.3",
     "@dinohorvat/azure-database": "^1.0.0",
+    "@nestjs/azure-func-http": "^0.6.0",
     "@nestjs/common": "^7.0.0",
     "@nestjs/config": "^0.5.0",
     "@nestjs/core": "^7.0.0",
